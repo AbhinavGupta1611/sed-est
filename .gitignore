@@ -3,6 +3,16 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# all .py files directly under LSTM folder
+*.py
+
+# LSTM tutorial
+LSTM_tutorial.ipynb
+
+# Remove few files from mean_prediction model
+mean_predictions_model/LSTM_code.txt
+mean_predictions_model/LSTM_global_gauged.py
+
 # C extensions
 *.so
 

@@ -169,7 +169,7 @@ hidden_dim, n_layers, output_dim = 256, 1, 1
 lrate = 10**(-3)
 loss_fn = nn.L1Loss()
 optim_lr = 0.7
-use_RS = 'yes'
+use_RS = 'no'
 #quant = 0.10
 #binom_prob = [0.5, 0.5]
 
