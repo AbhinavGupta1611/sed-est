@@ -21,10 +21,49 @@ This repo contains codes to estimate SSC using several hydrometeorological and w
 #### 3. Install required packages
     pip install -r requirements.txt
 
-#### 4. Download the pretrained models from Zenodo (Optional: required to run the script scripts/predict.py)
+#### 4. Download the raw data and pretrained models from Zenodo  (Pre-trained models are required to run the only script scripts/predict.py) 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14902634.svg)](https://doi.org/10.5281/zenodo.14902634)
     
-    
+### Direcotry information
+The repo contains both the standalone implementation and modular implemenation.
+
+#### Standalone implementation 
+**Mean_predictions_model** : Contains the standalone scripts that can be used to reproduce the results reproted in [Gupta and Feng (2025)](https://www.sciencedirect.com/science/article/pii/S0022169425004494).
+
+#### Modular implementation
+**models**: Contains the various pytorch classes required to run the model
+
+**scripts**: contains various scripts to load the raw data, train LSTM, and load LSTM to predict SSC
+
+### Usage example
+The instruction below provides a guide to run a standalone script *LSTM_global_gauged.py*
+1. Download the raw data from [Zenodo repository](https://zenodo.org/records/14902634) to a directory **sed_data**
+2. Specify the LSTM hyperparameters. You can experiment with any hyperparameter comnbination you want. [Gupta and Feng (2025)](https://www.sciencedirect.com/science/article/pii/S0022169425004494) used the following hyperparameters combination:
+   
+        Lseq = 30       # Sequence length
+        L = Lseq        # *L* is just a dummy variable which should be specified as equal to Lseq 
+        epochs = 20     # Sequence length    
+        nseeds = 8      # Number of models trained to deal with randomness in training
+        hidden_dim, n_layers, output_dim = 256, 1, 1    # hidden dimension, number of layers, output dimension
+        lrate = 10**(-3)        # Learning rate
+        loss_fn = nn.L1Loss()   # Loss function
+   
+4. Specify the variable *main_dir* in which raw data are contained (assuming that raw data are saved in the directory D:/sed-data/raw_data)
+5. Specify teh folder where trained models and predictions will be saved
+6. Specify the name of the textfile containing raw data. There are five textfiles containing the raw data
+
+   **dataLSTMres_with_simSSC_100_MS01**: Use this file if you *do not want* to use MMF simulated SY as model input (This file will baseline model described in Gupta and Feng, 2025)
+
+   **dataLSTMres_with_simSSC_100_MS01**: Use this file if you *want* to use MMF simulated SY as model input
+
+   **dataLSTMres_without_simSSC_Q_100_MS01**: Use this file if you *do not want* to use MMF simulated SY as model input, but *want* to use VIC simulated streamflow as input
+
+   **dataLSTMres_with_simSSC_Q_100_MS01**: Use this file if you *want* to use both MMF simulated SY and VIC simulated streamflow as input
+
+   **dataLSTMres_without_simSSC_Qobs_100_MS01**: Use this file if you *do not want* to use MMF simulated SY as model input, but *want* to use observed streamflow as input
+
+7. You can run the model now 
+
 ### References
 Gupta, A., & Feng, D. (2025). Regional scale simulations of daily suspended sediment concentration at gauged and ungauged rivers using deep learning. Journal of Hydrology, 133111.
     
