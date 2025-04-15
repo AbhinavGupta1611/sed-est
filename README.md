@@ -52,17 +52,43 @@ The instruction below provides a guide to run a standalone script *LSTM_global_g
 5. Specify teh folder where trained models and predictions will be saved
 6. Specify the name of the textfile containing raw data. There are five textfiles containing the raw data
 
-   **dataLSTMres_with_simSSC_100_MS01**: Use this file if you *do not want* to use MMF simulated SY as model input (This file will baseline model described in Gupta and Feng, 2025)
+   **dataLSTMres_without_simSSC_100_MS01.txt**: Use this file if you *do not want* to use MMF simulated SY as model input (This file will baseline model described in Gupta and Feng, 2025)
 
-   **dataLSTMres_with_simSSC_100_MS01**: Use this file if you *want* to use MMF simulated SY as model input
+   **dataLSTMres_with_simSSC_100_MS01.txt**: Use this file if you *want* to use MMF simulated SY as model input
 
-   **dataLSTMres_without_simSSC_Q_100_MS01**: Use this file if you *do not want* to use MMF simulated SY as model input, but *want* to use VIC simulated streamflow as input
+   **dataLSTMres_without_simSSC_Q_100_MS01.txt**: Use this file if you *do not want* to use MMF simulated SY as model input, but *want* to use VIC simulated streamflow as input
 
-   **dataLSTMres_with_simSSC_Q_100_MS01**: Use this file if you *want* to use both MMF simulated SY and VIC simulated streamflow as input
+   **dataLSTMres_with_simSSC_Q_100_MS01.txt**: Use this file if you *want* to use both MMF simulated SY and VIC simulated streamflow as input
 
-   **dataLSTMres_without_simSSC_Qobs_100_MS01**: Use this file if you *do not want* to use MMF simulated SY as model input, but *want* to use observed streamflow as input
+   **dataLSTMres_without_simSSC_Qobs_100_MS01.txt**: Use this file if you *do not want* to use MMF simulated SY as model input, but *want* to use observed streamflow as input
 
-7. You can run the model now 
+7. You can run the model now
+
+An example code snippet that can be used to run the script:
+
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"Using {device} device")
+    Lseq = 30
+    L = Lseq
+    epochs = 20
+    nseeds = 8
+    hidden_dim, n_layers, output_dim = 128, 1, 1
+    lrate = 10**(-3)
+    loss_fn = nn.L1Loss()
+    #optim_lr = 0.7
+    #use_RS = 'no'
+    
+    # prepare data for LSTM regression
+    ############ Note: Learning rate scheduler was not used for 1st paper 
+    main_dir = 'D:/sed-data/raw_data'
+    save_subdir = 'LSTM_global_gauged_{}_{}_{}_{}'.format(Lseq, epochs, hidden_dim, lrate)
+    if os.path.exists(os.path.join(main_dir, save_subdir)) == False:
+        os.mkdir(os.path.join(main_dir, save_subdir))
+    
+    fname = 'dataLSTMres_without_simSSC_100_MS01.txt'
+    fnameSplt = 'train_test_split.txt'
+
+   
 
 ### References
 Gupta, A., & Feng, D. (2025). Regional scale simulations of daily suspended sediment concentration at gauged and ungauged rivers using deep learning. Journal of Hydrology, 133111.
