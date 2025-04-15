@@ -9,21 +9,21 @@ This repo contains codes to estimate SSC using several hydrometeorological and w
 
 Models: LSTM was used as the deep learning model and the models were developed in three scenarios: gauged, ungauged, and local
 
-Installation Instructions
+### Installation Instructions
 
-# Clone the repo
+#### 1. Clone the repo
 git clone https://github.com/AbhinavGupta1611/sed-est.git
 
 cd sed-est
 
-# Create a virtual environment
+#### 2. Create a virtual environment
 python -m venv venv
 source venv/bin/activate     # On Windows use: venv\Scripts\activate
 
-# Install required packages
+#### 3. Install required packages
 pip install -r requirements.txt
 
-# Download the pretrained models from Zenodo (Optional: required to run the script scripts/predict.py)
+#### 4. Download the pretrained models from Zenodo (Optional: required to run the script scripts/predict.py)
 https://zenodo.org/badge/DOI/10.5281/zenodo.14902634.svg
     
     
