@@ -24,7 +24,7 @@ This repo contains codes to estimate SSC using several hydrometeorological and w
 #### 4. Download the raw data and pretrained models from Zenodo  (Pre-trained models are required to run the only script scripts/predict.py) 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14902634.svg)](https://doi.org/10.5281/zenodo.14902634)
     
-### Direcotry information
+### Directory information
 The repo contains both the standalone implementation and modular implemenation.
 
 #### Standalone implementation 
