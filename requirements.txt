@@ -1,0 +1,8 @@
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.2.0
+scipy==1.11.3
+torch==2.1.0+cu118
+torchaudio==2.1.0+cu118
+torchvision==0.16.0+cu118
+tqdm==4.66.1
