@@ -5,7 +5,7 @@ Raw data and pre-trained models: [![DOI](https://zenodo.org/badge/DOI/10.5281/ze
 
 ### Overview:
 
-This repo contains codes to estimate SSC using several hydrometeorological and watershed static attribute data as inputs to the model. LSTM was used as the deep learning model and the models were developed in three scenarios: gauged, ungauged, and local
+This repo contains codes to estimate SSC using several hydrometeorological and watershed static attribute data as inputs to the model. LSTM was used as the deep learning model and the models were developed in three scenarios: gauged, ungauged, and local. The repo can be used to reproduce the results in [Gupta and Feng (2025)](https://www.sciencedirect.com/science/article/pii/S0022169425004494).
 
 ### Installation Instructions
 
