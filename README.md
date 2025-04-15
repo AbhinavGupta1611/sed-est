@@ -24,7 +24,7 @@ source venv/bin/activate     # On Windows use: venv\Scripts\activate
 pip install -r requirements.txt
 
 #### 4. Download the pretrained models from Zenodo (Optional: required to run the script scripts/predict.py)
-https://zenodo.org/badge/DOI/10.5281/zenodo.14902634.svg
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14902634.svg)](https://doi.org/10.5281/zenodo.14902634)
     
     
 
